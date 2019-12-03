@@ -1,2 +1,3 @@
-# azure-pipelines-issues
-A public collection of issues I faced while adopting azure pipelines
+# azure-pipelines-work
+Notes, scripts, etc. for working with azure pipelines. Mostly for building Apache Flink on AZP.
+
