@@ -4,11 +4,15 @@ Notes, scripts, etc. for working with azure pipelines. Mostly for building Apach
 ## Bootstrap a new build worker
 
 ```
-yum install git htop yum-utils
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install htop yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
+systemctl enable docker.service
+systemctl start docker.service
+
+yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+yum -y install  git2u-all
+
 git clone https://github.com/rmetzger/azure-pipelines-work.git
 ```
 
