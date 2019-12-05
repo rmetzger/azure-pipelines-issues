@@ -44,5 +44,8 @@ do
    VSTS_AGENT_INPUT_POOL=Default \
    VSTS_AGENT_INPUT_AGENT=$NAME-agent$i \
    ./config.sh --unattended
-   ./svc.sh install
+   ./svc.sh install agent$i
+
+   echo "Changing permissions of the entire home directory again"
+   chown -R agent$i /home/agent$i
 done
