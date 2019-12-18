@@ -4,9 +4,9 @@ Notes, scripts, etc. for working with azure pipelines. Mostly for building Apach
 ## Bootstrap a new build worker
 
 ```
-yum install htop yum-utils
+yum -y install htop yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install docker-ce
+yum -y install docker-ce
 systemctl enable docker.service
 systemctl start docker.service
 
