@@ -17,12 +17,17 @@ if [[ -z "${NUM_AGENTS}" ]]; then
 	exit 1;
 fi
 
+if [[ -z "${FROM_ID}" ]]; then
+	echo "Env variable FROM_ID not set"
+	exit 1;
+fi
+
 if [[ -z "${NAME}" ]]; then
         echo "Env variable NAME not set"
         exit 1;
 fi
 
-for i in `seq 1 $NUM_AGENTS`
+for i in `seq -w $ID_START $NUM_AGENTS`
 do
    echo "Creating user agent$i"
    useradd agent$i
@@ -31,8 +36,8 @@ do
    mkdir myagent && cd myagent
 
    echo "Downloading agent tool"
-   wget https://vstsagentpackage.azureedge.net/agent/2.160.1/vsts-agent-linux-x64-2.160.1.tar.gz
-   tar xf vsts-agent-linux-x64-2.160.1.tar.gz
+   wget https://vstsagentpackage.azureedge.net/agent/2.166.3/vsts-agent-linux-x64-2.166.3.tar.gz
+   tar xf vsts-agent-linux-x64-2.166.3.tar.gz
  
    chown -R agent$i /home/agent$i
 
@@ -48,4 +53,6 @@ do
 
    echo "Changing permissions of the entire home directory again"
    chown -R agent$i /home/agent$i
+
+   ./svc.sh start
 done
